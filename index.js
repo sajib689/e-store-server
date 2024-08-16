@@ -32,8 +32,6 @@ async function run() {
         const [min, max] = price.split('-');
         query.price = { $gte: parseInt(min), $lte: parseInt(max) };
       }
-
-      // Define sorting options
       const sortOptions = {};
       if (sort === 'price_asc') sortOptions.price = 1;
       if (sort === 'price_desc') sortOptions.price = -1;
