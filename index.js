@@ -25,8 +25,6 @@ async function run() {
       const { page = 1, limit = 6, search = '', sort = '', category = '', price = '' } = req.query;
       
       const skip = (page - 1) * limit;
-
-      // Create a query object to filter products
       const query = {};
       if (search) query.productName = { $regex: search, $options: 'i' };
       if (category) query.category = category;
