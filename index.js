@@ -47,7 +47,7 @@ async function run() {
     });
 
   } finally {
-    // Keeping this empty as you don't need to close the connection manually in this case.
+    
   }
 }
 
