@@ -22,8 +22,12 @@ async function run() {
   try {
     const productsCollection = await client.db('e-store').collection('products');
     app.get('/products', async (req, res) => {
-        const result = await productsCollection.find().toArray()
-        res.send(result)
+        const {page = 1, limit = 6, } = req.query
+        const skip = (page - 1) * limit
+        const total = await productsCollection.countDocuments()
+        const products = await productsCollection.find().skip(skip).limit(parseInt(limit)).toArray()
+        res.send({ products, total });
+
     })
     } finally {
    
