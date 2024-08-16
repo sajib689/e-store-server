@@ -21,7 +21,7 @@ async function run() {
   try {
     // products collection
     const productsCollection = client.db('e-store').collection('products');
-
+    // products api version
     app.get('/products', async (req, res) => {
       const { page = 1, limit = 6, search = '', sort = '', category = '', price = '' } = req.query;
       
