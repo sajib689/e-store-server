@@ -40,12 +40,8 @@ async function run() {
       if (sort === 'price_asc') sortOptions.price = 1;
       if (sort === 'price_desc') sortOptions.price = -1;
       if (sort === 'date_desc') sortOptions.createdAt = -1;
-
-      // Fetch total number of documents for pagination
       const total = await productsCollection.countDocuments(query);
-
-      // Fetch products with applied filters, sorting, and pagination
-      const products = await productsCollection.find(query)
+       const products = await productsCollection.find(query)
         .sort(sortOptions)
         .skip(skip)
         .limit(parseInt(limit))
